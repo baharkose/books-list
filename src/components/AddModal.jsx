@@ -1,6 +1,7 @@
 import React from "react";
 
-const AddModal = () => {
+const AddModal = (selectedBook) => {
+  console.log(selectedBook)
   return <div>Modal</div>;
 };
 
