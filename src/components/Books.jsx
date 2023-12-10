@@ -36,9 +36,12 @@ const Books = ({ bookList, setSelectedBook, setShowModal }) => {
               width: choicenBook == book.id ? "40%" : "",
             }}
           >
-            <Card.Title>{book.title}</Card.Title>
-            <Card.Text>{book.author}</Card.Text>
-            <Card.Text>{book.description}</Card.Text>
+            <Card.Title>
+              <strong>Title:</strong>
+              {book.title}
+              </Card.Title>
+            <Card.Text><strong>Author: :</strong>{book.author}</Card.Text>
+            <Card.Text><strong>Description:</strong>{book.description}</Card.Text>
             <Button variant="primary"
             onClick={()=>{
               setShowModal(true)

@@ -1,31 +1,37 @@
 import React from "react";
 import { useState } from "react";
-import Button from "react-bootstrap/Button";
-import Modal from "react-bootstrap/Modal";
+import { Button, Modal, Form } from "react-bootstrap";
 
-const AddModal = ({selectedBook, showModal, setShowModal}) => {
- 
-
-    return (
+const AddModal = ({ selectedBook, showModal, setShowModal }) => {
+  const { id, image_url, title, author, description } = selectedBook;
+  return (
     <div>
-     
-<Modal show={showModal}>
+      <Modal show={showModal} onHide={() => setShowModal(false)}>
+      <Form>
         <Modal.Header closeButton>
-          <Modal.Title>Modal heading</Modal.Title>
+          <Modal.Title>{title}</Modal.Title>
         </Modal.Header>
-        <Modal.Body>Woohoo, you are reading this text in a modal!</Modal.Body>
+        <Modal.Body>
+            <Form.Group className="mb-3" controlId="formBasicEmail">
+              <Form.Label>Starting Date:</Form.Label>
+              <Form.Control type="date" />
+            </Form.Group>
+            <Form.Group className="mb-3" controlId="formBasicEmail">
+              <Form.Label>Finishing Date:</Form.Label>
+              <Form.Control type="date" />
+            </Form.Group>
+         
+        </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" 
-          onClick={() => setShowModal(false)}>
+          <Button variant="secondary" onClick={() => setShowModal(false)}>
             Close
           </Button>
-          <Button variant="primary" 
-          onClick={() => setShowModal(false)}>
+          <Button variant="primary" onClick={() => setShowModal(false)}>
             Save Changes
           </Button>
         </Modal.Footer>
+        </Form>
       </Modal>
-   
     </div>
   );
 };

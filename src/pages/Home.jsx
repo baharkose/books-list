@@ -23,6 +23,7 @@ const Home = () => {
         selectedBook={selectedBook}
         setShowModal={setShowModal}
         showModal={showModal}
+        selectedBook={selectedBook}
       />
       <BookList />
     </div>
