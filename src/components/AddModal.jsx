@@ -8,22 +8,43 @@ const AddModal = ({
   newBookList,
   setNewBookList,
 }) => {
+  const { id, image_url, title, author, description } = selectedBook;
+
   const [target, setTarget] = useState({
+    titleT: title,
     startDate: "",
     finishDate: "",
   });
-  const { id, image_url, title, author, description } = selectedBook;
-  const { startDate, finishDate } = target;
+
+
+  const { titleT, startDate, finishDate } = target;
+  console.log(titleT);
 
   // + boş objeleri tespit etmek için
   const [isEmpty, setIsEmpty] = useState(false);
-  //* Modaldan gelen veriler çekildi.
 
+  //+ tekrarlayan elemanları tespit etmek için
+
+  //* Modaldan gelen veriler çekildi. -> target ile
   const handleTarget = (e) => {
-    setTarget({ ...target, [e.target.name]: e.target.value });
+
+    setTarget({
+      ...target,
+      [e.target.name]: e.target.value,
+      titleT:title
+    });
     console.log(target);
   };
+
+  const isSame = () => {
+    return newBookList.some((item) => item.title == titleT);
+  };
+
+  console.log(isSame());
+
   const handleBookList = () => {
+    setTarget({ ...target, titleT: title });
+
     //! boş eleman girildiğinde uyarı verilmesi
     const isValid = Object.values(target).every(
       (value) => value !== null || value !== undefined || value !== ""
@@ -33,13 +54,16 @@ const AddModal = ({
     setIsEmpty(isValid);
     console.log(target);
     console.log(isValid);
-    if (isValid) {
+
+    if (!isValid) {
+      alert("Please, fill out all fields...");
+    } else if (isSame()) {
+      alert("This book has already been selected...");
+    } else {
       setNewBookList([
         ...newBookList,
         { ...selectedBook, ...target, id: new Date().getTime() },
       ]);
-    } else {
-      alert("Please, fill out all fields...");
     }
     console.log(newBookList);
     //! bookListi aç, içerisine selectedBooku ve targetı açarak ekle ve id ekle
