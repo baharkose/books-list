@@ -4,10 +4,13 @@ import BookList from ".././components/BookList";
 import Books from ".././components/Books";
 import Header from "../components/Header";
 import bookList from "../helper/data";
+import Footer from "../components/Footer";
 const Home = () => {
   const [selectedBook, setSelectedBook] = useState([]);
   // + veriyi çekeceği yerde set, alacağın yerde state kullan.
   const [showModal, setShowModal] = useState(false);
+  //+ şimdi tüm verileri BookListe yollamak için bir state oluşturalım
+  const [newBookList, setNewBookList] = useState([]);
 
   return (
     <div>
@@ -23,9 +26,11 @@ const Home = () => {
         selectedBook={selectedBook}
         setShowModal={setShowModal}
         showModal={showModal}
-        selectedBook={selectedBook}
+        setNewBookList={setNewBookList}
+        newBookList={newBookList}
       />
-      <BookList />
+      <BookList newBookList={newBookList} setNewBookList={setNewBookList} />
+      <Footer />
     </div>
   );
 };
