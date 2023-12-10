@@ -23,14 +23,15 @@ function Header({ setSearchedBooks, searchedBooks, bookList }) {
           <Form.Control
             type="search"
             placeholder="Search"
-            className="me-2"
+            className="me-2  searchInpt"
             aria-label="Search"
             name="search"
+
             onChange={(e) => {
               handleSearch(e); // Her değişiklikte arama fonksiyonunu çağır
             }}
           />
-          <Button variant="outline-success" onClick={handleSearch}>
+          <Button variant="outline-success"  className="searchBtn" onClick={handleSearch}>
             Search
           </Button>
         </Form>

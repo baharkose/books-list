@@ -8,10 +8,10 @@ const Books = ({ bookList, setSelectedBook, setShowModal }) => {
   const [choicenBook, setChoicenBook] = useState("");
 
   return (
-    <Container className="d-flex flex-wrap gap-4 mt-5 justify-content-center m-auto ">
+    <Container className="d-flex flex-wrap gap-4 mt-5 justify-content-center m-auto books ">
       {bookList.map((book) => (
         <Card
-          className="mb-4 d-flex justify-content-center "
+          className="mb-4 d-flex justify-content-center card "
           style={{ width: choicenBook == book.id ? "25rem" : "15rem" }}
           key={book.id}
           onClick={() =>setChoicenBook(book.id)}
@@ -43,6 +43,7 @@ const Books = ({ bookList, setSelectedBook, setShowModal }) => {
             <Card.Text><strong>Author: :</strong>{book.author}</Card.Text>
             <Card.Text><strong>Description:</strong>{book.description}</Card.Text>
             <Button variant="primary"
+            className="addToCartBtn"
             onClick={()=>{
               setShowModal(true)
               setSelectedBook(book)

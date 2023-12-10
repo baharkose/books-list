@@ -1,18 +1,78 @@
-*{
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
+@import url("https://fonts.googleapis.com/css2?family=Parisienne&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Kalam&display=swap');
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-image: url("../public/images/background-2.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center 4rem;
+  font-family: "Parisienne", cursive;
+
+
+  .searchBtn{
+    background-color: #198754;
+    border: none;
+    color: white;
+    font-weight: bold;
+
+    
+  }
+}
+
+.searchInpt{
+        background:  #DBC6AE;
+        color: white;
+        font-weight: bolder;
+    }
+
+.searchInpt:hover{
+        background:  #DBC6AE;
+    }
+.navbar {
+  background-color: #DBC6AE !important;
+  font-size: 2rem;
 }
 
 
+.books{
 
-body{
-    background-image:  url( "../public/images/background-2.png");
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center 4rem ;
+    font-family: 'Kalam', cursive;
 }
 
-.navbar{
- background-color: #fbf5a7 !important;
+.card{
+    cursor: pointer;
+    background-color: #DBC6AE83;
+}
+
+.addToCartBtn{
+    background-color: #EFB760;
+    border: none;
+    font-weight: bolder;
+}
+.addToCartBtn:hover{
+    background-color: #EFB760;
+    filter: brightness(1.1);
+}
+
+.modalM{
+
+    font-family: 'Kalam', cursive;
+    background-color: #DBC6AE83;
+    input{
+        background-color: #DBC6AE00; 
+    }
+    .header{
+        text-align: center !important;
+        margin: auto;
+    }
+
+    .saveBtn{
+        background-color: #EFB760;
+        border: none;
+    }
 }

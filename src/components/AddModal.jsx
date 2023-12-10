@@ -28,10 +28,10 @@ const AddModal = ({ selectedBook, showModal, setShowModal, newBookList, setNewBo
 
   return (
     <div>
-      <Modal show={showModal} onHide={() => setShowModal(false)}>
-        <Form>
-          <Modal.Header closeButton>
-            <Modal.Title>{title}</Modal.Title>
+      <Modal show={showModal} onHide={() => setShowModal(false)} >
+        <Form  className="modalM">
+          <Modal.Header closeButton >
+            <Modal.Title className="header">{title}</Modal.Title>
           </Modal.Header>
           <Modal.Body>
             <Form.Group className="mb-3" controlId="formBasicEmail">
@@ -56,6 +56,7 @@ const AddModal = ({ selectedBook, showModal, setShowModal, newBookList, setNewBo
               Close
             </Button>
             <Button
+            className="saveBtn"
               variant="primary"
               onClick={() => {
                 setShowModal(false);
