@@ -43,8 +43,9 @@ const AddModal = ({
   console.log(isSame());
 
   const handleBookList = () => {
-    setTarget({ ...target, titleT: title });
 
+    setTarget({ ...target, titleT: title });
+    console.log(target)
     //! boş eleman girildiğinde uyarı verilmesi
     const isValid = Object.values(target).every(
       (value) => value !== null || value !== undefined || value !== ""
