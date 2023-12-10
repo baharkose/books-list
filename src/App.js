@@ -1,13 +1,10 @@
-import AddModal from "./components/AddModal";
-import BookList from "./components/BookList";
-import Books from "./components/Books";
+import Home from "./pages/Home";
+
 
 function App() {
   return (
     <>
-    <Books/>
-    <AddModal/>
-    <BookList/>
+    <Home/>
     </>
   );
 }
