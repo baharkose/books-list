@@ -6,6 +6,8 @@ import Header from "../components/Header";
 import bookList from "../helper/data";
 import Footer from "../components/Footer";
 const Home = () => {
+  const [clickCanvas, setClickCanvas] = useState(false);
+
   const [selectedBook, setSelectedBook] = useState([]);
   // + veriyi çekeceği yerde set, alacağın yerde state kullan.
   const [showModal, setShowModal] = useState(false);
@@ -14,7 +16,7 @@ const Home = () => {
 
   //+ kitap arama filtreleme işlemi
   const [searchedBooks, setSearchedBooks] = useState(bookList);
-  console.log(`searchedBooks is `,searchedBooks)
+  console.log(`searchedBooks is `, searchedBooks);
 
   return (
     <div>
@@ -22,12 +24,15 @@ const Home = () => {
         setSearchedBooks={setSearchedBooks}
         searchedBooks={searchedBooks}
         bookList={bookList}
+        setClickCanvas={setClickCanvas}
+        clickCanvas={clickCanvas}
       />
 
       <Books
         bookList={searchedBooks}
         setSelectedBook={setSelectedBook}
         setShowModal={setShowModal}
+
       />
 
       <AddModal
@@ -37,7 +42,12 @@ const Home = () => {
         setNewBookList={setNewBookList}
         newBookList={newBookList}
       />
-      <BookList newBookList={newBookList} setNewBookList={setNewBookList} />
+      <BookList
+        newBookList={newBookList}
+        setNewBookList={setNewBookList}
+        clickCanvas={clickCanvas}
+        setClickCanvas={setClickCanvas}
+      />
       <Footer />
     </div>
   );

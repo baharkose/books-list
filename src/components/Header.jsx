@@ -3,9 +3,11 @@ import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
 import Form from "react-bootstrap/Form";
 import Navbar from "react-bootstrap/Navbar";
-function Header({ setSearchedBooks, searchedBooks, bookList }) {
+import myLogo from "../img/logo.png";
 
+function Header({ setSearchedBooks, searchedBooks, bookList, setClickCanvas, clickCanvas }) {
   const [searchInput, setSearchInput] = useState("");
+  console.log(clickCanvas)
   console.log(searchedBooks);
   const handleSearch = (e) => {
     setSearchedBooks(
@@ -18,7 +20,10 @@ function Header({ setSearchedBooks, searchedBooks, bookList }) {
   return (
     <Navbar expand="lg" className="bg-body-tertiary p-4 navbar">
       <Container fluid m-auto>
-        <Navbar.Brand href="#">Reading Book List</Navbar.Brand>
+        <Navbar.Brand href="#" className="logoTitle">
+         <span className="navbarTitle">Reading Book List</span> 
+          <img src={myLogo} alt="" width="80px" />
+        </Navbar.Brand>
         <Form className="d-flex">
           <Form.Control
             type="search"
@@ -26,13 +31,16 @@ function Header({ setSearchedBooks, searchedBooks, bookList }) {
             className="me-2  searchInpt"
             aria-label="Search"
             name="search"
-
             onChange={(e) => {
               handleSearch(e); // Her değişiklikte arama fonksiyonunu çağır
             }}
           />
-          <Button variant="outline-success"  className="searchBtn" onClick={handleSearch}>
-            Search
+          <Button
+            variant="outline-success"
+            className="searchBtn"
+            onClick={() => setClickCanvas(!clickCanvas)}
+          >
+            MyList
           </Button>
         </Form>
       </Container>
