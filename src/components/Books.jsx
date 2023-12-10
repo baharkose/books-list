@@ -3,7 +3,8 @@ import { Container } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 
-const Books = ({ bookList, setSelectedBook }) => {
+const Books = ({ bookList, setSelectedBook, setShowModal }) => {
+
   const [choicenBook, setChoicenBook] = useState("");
 
   return (
@@ -39,7 +40,12 @@ const Books = ({ bookList, setSelectedBook }) => {
             <Card.Text>{book.author}</Card.Text>
             <Card.Text>{book.description}</Card.Text>
             <Button variant="primary"
-            onClick={()=> setSelectedBook(book)}>Add To List</Button>
+            onClick={()=>{
+              setShowModal(true)
+              setSelectedBook(book)
+            }
+              
+              }>Add To List</Button>
           </Card.Body>
           </div>
         </Card>
