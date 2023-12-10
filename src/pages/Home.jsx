@@ -12,12 +12,20 @@ const Home = () => {
   //+ şimdi tüm verileri BookListe yollamak için bir state oluşturalım
   const [newBookList, setNewBookList] = useState([]);
 
+  //+ kitap arama filtreleme işlemi
+  const [searchedBooks, setSearchedBooks] = useState(bookList);
+  console.log(`searchedBooks is `,searchedBooks)
+
   return (
     <div>
-      <Header />
+      <Header
+        setSearchedBooks={setSearchedBooks}
+        searchedBooks={searchedBooks}
+        bookList={bookList}
+      />
 
       <Books
-        bookList={bookList}
+        bookList={searchedBooks}
         setSelectedBook={setSelectedBook}
         setShowModal={setShowModal}
       />
