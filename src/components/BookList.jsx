@@ -9,7 +9,7 @@ import {
 } from "@coreui/react";
 import { Container, Table, Offcanvas } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTrash } from "@fortawesome/free-solid-svg-icons";
+import { faXmark} from "@fortawesome/free-solid-svg-icons";
 const BookList = ({ newBookList, setNewBookList, clickCanvas, setClickCanvas }) => {
   console.log(newBookList);
   const [visible, setVisible] = useState(false);
@@ -72,7 +72,7 @@ const BookList = ({ newBookList, setNewBookList, clickCanvas, setClickCanvas }) 
                         }}
                         onClick={() => handleDelete(id)}
                       >
-                        <FontAwesomeIcon icon={faTrash} />
+                        <FontAwesomeIcon icon={faXmark} />
                       </td>
                     </tr>
                   )

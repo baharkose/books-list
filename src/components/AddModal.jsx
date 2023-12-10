@@ -1,7 +1,6 @@
 import React from "react";
 import { useState } from "react";
 import { Button, Modal, Form } from "react-bootstrap";
-
 const AddModal = ({
   selectedBook,
   showModal,
@@ -13,41 +12,38 @@ const AddModal = ({
     startDate: "",
     finishDate: "",
   });
-
   const { id, image_url, title, author, description } = selectedBook;
   const { startDate, finishDate } = target;
-  
+
   // + boş objeleri tespit etmek için
   const [isEmpty, setIsEmpty] = useState(false);
-
-  
-  
+  //* Modaldan gelen veriler çekildi.
 
   const handleTarget = (e) => {
     setTarget({ ...target, [e.target.name]: e.target.value });
+    console.log(target);
   };
-
   const handleBookList = () => {
-    //! boş eleman girildiğinde uyarı verilmesi 
-    setIsEmpty(
-      Object.values(target).every(
-        (value) => value === null || value === undefined || value === ""
-      )
+    //! boş eleman girildiğinde uyarı verilmesi
+    const isValid = Object.values(target).every(
+      (value) => value !== null || value !== undefined || value !== ""
     );
 
-  
-    if (isEmpty) {
+    // + Çok önemli bir bilgi, setterda asenkronluk olduğu için birinden diğerine haber yollarken sıkıntı çıkabiliyor. Bu nedenle arada bir değişken kullanmak gerekiyor.
+    setIsEmpty(isValid);
+    console.log(target);
+    console.log(isValid);
+    if (isValid) {
       setNewBookList([
         ...newBookList,
         { ...selectedBook, ...target, id: new Date().getTime() },
       ]);
     } else {
-      alert("Please, fill our all fields...");
+      alert("Please, fill out all fields...");
     }
     console.log(newBookList);
     //! bookListi aç, içerisine selectedBooku ve targetı açarak ekle ve id ekle
   };
-
   return (
     <div>
       <Modal show={showModal} onHide={() => setShowModal(false)}>
