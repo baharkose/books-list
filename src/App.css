@@ -1,1 +1,18 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
 
+
+
+body{
+    background-image:  url( "../public/images/background-2.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center 4rem ;
+}
+
+.navbar{
+ background-color: #fbf5a7 !important;
+}

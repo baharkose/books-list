@@ -16,7 +16,7 @@ function Header({ setSearchedBooks, searchedBooks, bookList }) {
     console.log("is clicked");
   };
   return (
-    <Navbar expand="lg" className="bg-body-tertiary p-4">
+    <Navbar expand="lg" className="bg-body-tertiary p-4 navbar">
       <Container fluid m-auto>
         <Navbar.Brand href="#">Reading Book List</Navbar.Brand>
         <Form className="d-flex">
