@@ -8,66 +8,56 @@ const AddModal = ({
   newBookList,
   setNewBookList,
 }) => {
-  const { id, image_url, title, author, description } = selectedBook;
-
+  const { id, image_url, title, author, description } = selectedBook; //* ilk olarak seçili kitaplar getirildi.
   const [target, setTarget] = useState({
-    titleT: title,
+    titleT: "", //- buraya title yazınca ekleme gerçekleşmiyor. aynı kitabın alınmaması için selected booktan gelen kitap adı eklendi. Bookliste gidecek targeta eklendi.
     startDate: "",
     finishDate: "",
   });
-
-
+  console.log(target);
   const { titleT, startDate, finishDate } = target;
-  console.log(titleT);
 
-  // + boş objeleri tespit etmek için
+  //- boş objeleri tespit etmek için
   const [isEmpty, setIsEmpty] = useState(false);
+  const [isSame, setIsSame] = useState(false);
 
-  //+ tekrarlayan elemanları tespit etmek için
-
-  //* Modaldan gelen veriler çekildi. -> target ile
+  //- tekrarlayan elemanları tespit etmek için
+  //- Modaldan gelen veriler çekildi. -> target ile
   const handleTarget = (e) => {
-
     setTarget({
       ...target,
       [e.target.name]: e.target.value,
-      titleT:title
+      titleT: title, //* tagetın içerisine selected targettan gelen veri geldi.
     });
-    console.log(target);
   };
-
-  const isSame = () => {
-    return newBookList.some((item) => item.title == titleT);
-  };
-
-  console.log(isSame());
-
   const handleBookList = () => {
+    const sameV = newBookList.some((item) => item.title === titleT);
 
-    setTarget({ ...target, titleT: title });
-    console.log(target)
-    //! boş eleman girildiğinde uyarı verilmesi
-    const isValid = Object.values(target).every(
-      (value) => value !== null || value !== undefined || value !== ""
-    );
-
-    // + Çok önemli bir bilgi, setterda asenkronluk olduğu için birinden diğerine haber yollarken sıkıntı çıkabiliyor. Bu nedenle arada bir değişken kullanmak gerekiyor.
-    setIsEmpty(isValid);
-    console.log(target);
-    console.log(isValid);
-
-    if (!isValid) {
+    if (target.finishDate === "" || target.startDate === "") {
       alert("Please, fill out all fields...");
-    } else if (isSame()) {
-      alert("This book has already been selected...");
     } else {
-      setNewBookList([
-        ...newBookList,
-        { ...selectedBook, ...target, id: new Date().getTime() },
-      ]);
+      if (sameV) {
+        alert("This book has already been selected...");
+        setTarget({
+          startDate: "",
+          finishDate: "",
+          titleT: "",
+        });
+      } else {
+        setNewBookList([
+          ...newBookList,
+          {
+            ...selectedBook,
+            startDate,
+            finishDate,
+            title: titleT,
+            id: new Date().getTime(),
+          },
+        ]);
+      }
     }
     console.log(newBookList);
-    //! bookListi aç, içerisine selectedBooku ve targetı açarak ekle ve id ekle
+    //- bookListi aç, içerisine selectedBooku ve targetı açarak ekle ve id ekle
   };
   return (
     <div>
@@ -114,5 +104,4 @@ const AddModal = ({
     </div>
   );
 };
-
 export default AddModal;
