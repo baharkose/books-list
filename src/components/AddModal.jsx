@@ -1,6 +1,8 @@
 import React from "react";
 import { useState } from "react";
 import { Button, Modal, Form } from "react-bootstrap";
+import SweetAlert2 from "react-sweetalert2";
+
 const AddModal = ({
   selectedBook,
   showModal,
@@ -9,6 +11,7 @@ const AddModal = ({
   setNewBookList,
 }) => {
   const { id, image_url, title, author, description } = selectedBook; //* ilk olarak seçili kitaplar getirildi.
+  const [swalProps, setSwalProps] = useState({});
   const [target, setTarget] = useState({
     titleT: "", //- buraya title yazınca ekleme gerçekleşmiyor. aynı kitabın alınmaması için selected booktan gelen kitap adı eklendi. Bookliste gidecek targeta eklendi.
     startDate: "",
@@ -42,11 +45,9 @@ const AddModal = ({
           finishDate: "",
           titleT: "",
         });
-      }
-      else if(finishDate < startDate){
+      } else if (finishDate < startDate) {
         alert("Başlangıç tarihi bitiş tarihinden sonra olamaz");
-      } 
-      else {
+      } else {
         setNewBookList([
           ...newBookList,
           {
