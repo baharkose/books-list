@@ -32,7 +32,6 @@ const AddModal = ({
   };
   const handleBookList = () => {
     const sameV = newBookList.some((item) => item.title === titleT);
-
     if (target.finishDate === "" || target.startDate === "") {
       alert("Please, fill out all fields...");
     } else {
@@ -43,7 +42,11 @@ const AddModal = ({
           finishDate: "",
           titleT: "",
         });
-      } else {
+      }
+      else if(finishDate < startDate){
+        alert("Başlangıç tarihi bitiş tarihinden sonra olamaz");
+      } 
+      else {
         setNewBookList([
           ...newBookList,
           {

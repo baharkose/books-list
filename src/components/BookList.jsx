@@ -36,6 +36,7 @@ const BookList = ({ newBookList, setNewBookList, clickCanvas, setClickCanvas }) 
           />
         </COffcanvasHeader>
         <COffcanvasBody>
+          <h1  className={newBookList.length===0 ? "mt-5 display-2 text-center" : "d-none"}>Your Book List Is Empty</h1>
           <Container
             className="m-auto"
             style={{ display: newBookList.length === 0 ? "none" : "" }}
